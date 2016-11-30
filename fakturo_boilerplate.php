@@ -219,7 +219,19 @@ add_action( 'plugins_loaded', 'Boilerplate_load');
  * @since       1.0.0
  * @return      void
  */
-function boilerplate_activation() {
-    /* Activation functions here */
+register_activation_hook( plugin_basename( __FILE__ ), 'boilerplate_activate' );
+function boilerplate_activate() {
+    if(class_exists('fakturo')) {
+        $link = '<a href="' . admin_url('admin.php?page=fktr-boilerplate-extension-page') . '">'.__('Boilerplate Plugin Settings.',  'boilerplate').'</a>';
+        $notice = __('Boilerplate Activated.  Please check the fields on', 'boilerplate').' '. $link;
+        fktrNotices::add( array('text' => $notice , 'below-h2' => false , 'screen' => 'plugins_page_fakturo') );
+    }
 }
-register_activation_hook( __FILE__, 'boilerplate_activation' );
+/** * Deactivate Boilerplate on Deactivate Plugin  */
+register_deactivation_hook( plugin_basename( __FILE__ ), 'boilerplate_deactivate' );
+function boilerplate_deactivate() {
+    if(class_exists('fakturo')) {
+        $notice = __('Boilerplate DEACTIVATED.',  'boilerplate');
+        fktrNotices::add( array('text' => $notice , 'below-h2' => false, 'screen' => 'plugins_page_fakturo' ) );
+    }
+}

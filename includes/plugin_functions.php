@@ -46,7 +46,7 @@ class boilerplate_plugin_functions {
 		return array_merge(
 			$data,
 			array(
-				'<a href="'.  admin_url('admin.php?page=boilerplate-extension-page').'" title="' . __('Go to Boilerplate Settings Page') . '">' . __('Settings') . '</a>',
+				'<a href="'.  admin_url('admin.php?page=fktr-boilerplate-extension-page').'" title="' . __('Go to Boilerplate Settings Page') . '">' . __('Settings') . '</a>',
 			)
 		);
 	}
@@ -54,17 +54,6 @@ class boilerplate_plugin_functions {
 boilerplate_plugin_functions::hooks();
 
 
-/** * Activate Boilerplate on Activate Plugin */
-register_activation_hook( plugin_basename( BOILERPLATE_ROOT_FILE ), 'boilerplate_activate' );
-function boilerplate_activate() {
-	
-}
-
-/** * Deactivate Boilerplate on Deactivate Plugin  */
-register_deactivation_hook( plugin_basename( BOILERPLATE_ROOT_FILE ), 'boilerplate_deactivate' );
-function boilerplate_deactivate() {
-	
-}
 
 
 
